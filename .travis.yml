@@ -1,0 +1,16 @@
+language: go
+
+script:
+   go build -o koalapaste cmd/koalapaste/koalapaste.go
+
+go:
+  - 1.8
+  - master
+
+deploy:
+  provider: releases
+  api_key: "$GITHUB_API_KEY"
+  file: "koalapaste"
+  skip_cleanup: true
+  on:
+    tags: true
